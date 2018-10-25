@@ -18,6 +18,10 @@ public class copier : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision)
     {
         pController.setObjToCopy(collision.gameObject, isCutter);
+        if (collision.transform.tag == "Projectile")
+        {
+            pController.setSavedVelocity(collision.transform.GetComponent<Rigidbody2D>().velocity);
+        }
 
         if (isCutter)
         {

@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour {
     bool hasCut = false;
 
     [SerializeField] bool isCutMode = false;
-    
+    Vector2 savedVelocity;
 
 	// Use this for initialization
 	void Start () {
@@ -101,9 +101,7 @@ public class PlayerController : MonoBehaviour {
 
     void jump()
     {
-        
-            body.AddForce(transform.up * jumpForce);
-        
+        body.AddForce(transform.up * jumpForce);   
     }
 
     void shoot()
@@ -127,6 +125,11 @@ public class PlayerController : MonoBehaviour {
             GameObject obj = Instantiate(copiedObj, mousePos, transform.rotation);
             obj.SetActive(true);
 
+            if (obj.tag == "Projectile")
+            {
+                obj.GetComponent<Rigidbody2D>().velocity = savedVelocity;
+            }
+
             copiedObj = null;
             hasCut = false;
         }
@@ -138,5 +141,15 @@ public class PlayerController : MonoBehaviour {
     {
         copiedObj = obj;
         hasCut = cut;
+    }
+
+    public void pickUp()
+    {
+        Debug.Log("picked up!");
+    }
+
+    public void setSavedVelocity(Vector2 v)
+    {
+        savedVelocity = v;
     }
 }
