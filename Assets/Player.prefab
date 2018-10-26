@@ -35,7 +35,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4582494254870898}
   - component: {fileID: 212271756064729392}
-  - component: {fileID: 61308658247415548}
   m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
@@ -71,6 +70,7 @@ GameObject:
   - component: {fileID: 50559369682094254}
   - component: {fileID: 114961093455596992}
   - component: {fileID: 114933620609712024}
+  - component: {fileID: 61582100812193828}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -124,7 +124,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1674568545726194}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -30.880001, y: 0.9346117, z: 0}
+  m_LocalPosition: {x: 20.58, y: -4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4582494254870898}
@@ -193,12 +193,12 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!61 &61308658247415548
+--- !u!61 &61582100812193828
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1280587584783716}
+  m_GameObject: {fileID: 1674568545726194}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}

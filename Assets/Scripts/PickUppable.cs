@@ -25,4 +25,16 @@ public class PickUppable : MonoBehaviour {
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("pick up triggr triggered. lol");
+        if (collision.transform.GetComponent<PlayerController>())
+        {
+            collision.transform.GetComponent<PlayerController>().pickUp();
+            Destroy(this.gameObject);
+
+        }
+    }
+
+
 }
