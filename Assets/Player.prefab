@@ -43,6 +43,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1653228201484160
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4491631746644300}
+  - component: {fileID: 20869171634817848}
+  - component: {fileID: 81206008711316858}
+  m_Layer: 0
+  m_Name: Main Camera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1674568545726194
 GameObject:
   m_ObjectHideFlags: 0
@@ -61,6 +78,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4491631746644300
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1653228201484160}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.29, y: -0.45, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4963711672447942}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4582494254870898
 Transform:
   m_ObjectHideFlags: 1
@@ -81,7 +111,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1045801909786998}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.448, y: -0.822, z: 0}
+  m_LocalPosition: {x: -0.556, y: -0.822, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4963711672447942}
@@ -94,14 +124,55 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1674568545726194}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.632, y: -1.565, z: 0}
+  m_LocalPosition: {x: -30.880001, y: 0.9346117, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4582494254870898}
   - {fileID: 4754821408799378}
+  - {fileID: 4491631746644300}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &20869171634817848
+Camera:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1653228201484160}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 1
+  orthographic size: 6.3071895
+  m_Depth: -1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
 --- !u!50 &50559369682094254
 Rigidbody2D:
   serializedVersion: 4
@@ -114,9 +185,9 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 1
+  m_LinearDrag: 0.25
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -147,6 +218,13 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.04, y: 1.67}
   m_EdgeRadius: 0
+--- !u!81 &81206008711316858
+AudioListener:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1653228201484160}
+  m_Enabled: 1
 --- !u!114 &114933620609712024
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -158,7 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 263e86023727fb14584fe6749d8d715f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minVelocityToDie: 10
+  minVelocityToDie: 20.5
 --- !u!114 &114961093455596992
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -170,9 +248,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8d1f876fa4d71b449635cffe51c70bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 15
-  jumpForce: 40
+  moveSpeed: 75
+  jumpForce: 200
   maxJumpForceTime: 0.25
+  maxSpeed: 5
   bullet: {fileID: 1709836931534832, guid: 9d67bf66218406e41871df9f53a133b2, type: 2}
   shootForce: 1200
   bottomPos: {fileID: 4754821408799378}

@@ -11,14 +11,14 @@ public class target : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Camera.main)
-        {
-            Debug.Log("there is a main camera");
-        }
+        //if (Camera.main)
+        //{
+        //    Debug.Log("there is a main camera");
+        //}
         
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0;
-        Debug.Log(mousePos);
+        //Debug.Log(mousePos);
         transform.position = mousePos;
 	}
 }

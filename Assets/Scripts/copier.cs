@@ -17,16 +17,22 @@ public class copier : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        pController.setObjToCopy(collision.gameObject, isCutter);
-        if (collision.transform.tag == "Projectile")
+        if (collision.transform.tag != "Uncopiable")
         {
-            pController.setSavedVelocity(collision.transform.GetComponent<Rigidbody2D>().velocity);
-        }
 
-        if (isCutter)
-        {
-            collision.gameObject.SetActive(false);
+            pController.setObjToCopy(collision.gameObject, isCutter);
+            if (collision.transform.tag == "Projectile")
+            {
+                pController.setSavedVelocity(collision.transform.GetComponent<Rigidbody2D>().velocity);
+            }
+            pController.setRotation(collision.transform.rotation);
+            pController.setSavedScale(collision.transform.localScale);
+            if (isCutter)
+            {
+                collision.gameObject.SetActive(false);
+            }
         }
+ 
         Destroy(this.gameObject);
     }
 
