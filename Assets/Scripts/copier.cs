@@ -31,6 +31,11 @@ public class copier : MonoBehaviour {
             {
                 collision.gameObject.SetActive(false);
             }
+            if(collision.transform.tag == "Crate")
+            {
+                collision.gameObject.SetActive(false);
+
+            }
         }
  
         Destroy(this.gameObject);
