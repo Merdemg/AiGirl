@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 50081343070066504}
   - component: {fileID: 61969025688382204}
   - component: {fileID: 114059521321679314}
+  - component: {fileID: 114374569660492308}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Uncopiable
@@ -99,6 +100,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5641eefcbe97b7f4d8f6d66cb6f5548a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Health: 10
+--- !u!114 &114374569660492308
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1913678464983858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79221f4e220f4974b9eacf8c31e64fa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myMask:
+    serializedVersion: 2
+    m_Bits: 0
+  shootCoolDown: 2.5
+  bullet: {fileID: 0}
+  shootSpeed: 1000
+  left: {fileID: 0}
+  right: {fileID: 0}
 --- !u!212 &212719864037377654
 SpriteRenderer:
   m_ObjectHideFlags: 1
