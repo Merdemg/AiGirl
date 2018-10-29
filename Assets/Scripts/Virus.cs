@@ -9,6 +9,7 @@ public class Virus : MonoBehaviour {
     float counter = 0;
     [SerializeField] float shootCoolDown = 2.5f;
     [SerializeField] GameObject bullet;
+    [SerializeField] float maxShootDistance = 10f;
     [SerializeField] float shootSpeed = 1000;
     [SerializeField] Transform left, right;
 
@@ -23,7 +24,7 @@ public class Virus : MonoBehaviour {
         {
             counter += Time.deltaTime;
         }
-        else if (counter >= shootCoolDown && checkPlayerVisibiliy())
+        else if (counter >= shootCoolDown && checkPlayerVisibiliy() && Vector2.Distance(this.transform.position, player.transform.position) <= maxShootDistance)
         {
             counter = 0;
             shoot();
