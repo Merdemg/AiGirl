@@ -98,6 +98,22 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.GetComponent<Platform>())
+        {
+            transform.parent = collision.transform;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.transform.GetComponent<Platform>())
+        {
+            transform.parent = null;
+        }
+    }
+
     bool groundCheck()
     {
         Collider2D[] colliders = Physics2D.OverlapBoxAll(bottomPos.position, new Vector2(1, 0.05f), 0f, mask);
@@ -172,4 +188,6 @@ public class PlayerController : MonoBehaviour {
     {
         savedScale = scale;
     }
+
+
 }
