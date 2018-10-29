@@ -20,18 +20,31 @@ public class copier : MonoBehaviour {
         if (collision.transform.tag != "Uncopiable")
         {
 
+            if (collision.GetComponent<Platform>() && collision.GetComponentInChildren<PlayerController>())
+            {   // DONT COPY THE PLAYER WITH THE PLATFORM
+                pController.gameObject.transform.parent = null;
+            }
+
             pController.setObjToCopy(collision.gameObject, isCutter);
+
+            if (collision.GetComponent<Platform>() && collision.GetComponentInChildren<PlayerController>())
+            {   // DONT COPY THE PLAYER WITH THE PLATFORM
+                pController.gameObject.transform.parent = collision.transform;
+            }
+
+
             if (collision.transform.tag == "Projectile")
             {
                 pController.setSavedVelocity(collision.transform.GetComponent<Rigidbody2D>().velocity);
             }
+            
             pController.setRotation(collision.transform.rotation);
             pController.setSavedScale(collision.transform.localScale);
             if (isCutter)
             {
                 collision.gameObject.SetActive(false);
             }
-            if(collision.transform.tag == "Crate")
+            if(collision.transform.tag == "Crate")  // AVI'S NOOB SHIT< COME BACK LATER
             {
                 collision.gameObject.SetActive(false);
 
