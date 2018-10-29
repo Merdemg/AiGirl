@@ -34,8 +34,9 @@ public class Virus : MonoBehaviour {
     bool checkPlayerVisibiliy()
     {
         Debug.DrawRay(player.transform.position, this.transform.position - player.transform.position, Color.red);
-        Debug.Log(Physics2D.Raycast(player.transform.position, this.transform.position - player.transform.position, myMask).transform.gameObject);
-        if (Physics2D.Raycast(player.transform.position, this.transform.position - player.transform.position, myMask))
+        // Debug.Log(Physics2D.Raycast(player.transform.position, this.transform.position - player.transform.position, myMask).transform.gameObject);
+        Debug.Log(player.transform.position);
+        if (Physics2D.Raycast(player.transform.position, this.transform.position - player.transform.position, Mathf.Infinity, myMask))
         {
             RaycastHit2D hit = Physics2D.Raycast(player.transform.position, this.transform.position - player.transform.position, Mathf.Infinity, myMask);
             

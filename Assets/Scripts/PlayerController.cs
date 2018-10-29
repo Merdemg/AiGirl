@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] float moveSpeed;
     [SerializeField] float jumpForce;
     [SerializeField] float maxJumpForceTime = 0.6f;
+    [SerializeField] float maxSpeed = 5.0f;
     float jumpCounter = 0;
     
 
@@ -25,6 +26,8 @@ public class PlayerController : MonoBehaviour {
 
     [SerializeField] bool isCutMode = false;
     Vector2 savedVelocity;
+    Quaternion savedRotation;
+    Vector3 savedScale;
 
 	// Use this for initialization
 	void Start () {
@@ -87,6 +90,12 @@ public class PlayerController : MonoBehaviour {
     private void FixedUpdate()
     {        
         body.AddForce(direction * moveSpeed);
+
+        if (Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x) > maxSpeed)
+        {
+            GetComponent<Rigidbody2D>().velocity = new Vector2(Mathf.Sign(GetComponent<Rigidbody2D>().velocity.x) * maxSpeed,
+                GetComponent<Rigidbody2D>().velocity.y);
+        }
     }
 
     bool groundCheck()
@@ -122,8 +131,9 @@ public class PlayerController : MonoBehaviour {
         {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePos.z = 0;
-            GameObject obj = Instantiate(copiedObj, mousePos, transform.rotation);
+            GameObject obj = Instantiate(copiedObj, mousePos, savedRotation);
             obj.SetActive(true);
+            obj.transform.localScale = savedScale;
 
             if (obj.tag == "Projectile")
             {
@@ -151,5 +161,15 @@ public class PlayerController : MonoBehaviour {
     public void setSavedVelocity(Vector2 v)
     {
         savedVelocity = v;
+    }
+
+    public void setRotation(Quaternion quat)
+    {
+        savedRotation = quat;
+    }
+
+    public void setSavedScale(Vector3 scale)
+    {
+        savedScale = scale;
     }
 }
