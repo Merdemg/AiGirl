@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] float maxJumpForceTime = 0.6f;
     [SerializeField] float maxSpeed = 5.0f;
     float jumpCounter = 0;
+    bool isJumping = false;
     
 
     [SerializeField] GameObject bullet;
@@ -63,16 +64,21 @@ public class PlayerController : MonoBehaviour {
             if (groundCheck())
             {
                 jumpCounter = 0;
+                isJumping = true;
             }
             else
-            {
+            {   // Was I high? What does this line do? What is the purpose of it? What was I thinking?
                 jumpCounter = maxJumpForceTime;
             }
         }
         if (Input.GetKey(KeyCode.Space) && jumpCounter <= maxJumpForceTime)
         {
             jumpCounter += Time.deltaTime;
-            jump();
+
+        }
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            isJumping = false;
         }
 
         if (Input.GetKeyDown(KeyCode.LeftControl))
@@ -95,6 +101,12 @@ public class PlayerController : MonoBehaviour {
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(Mathf.Sign(GetComponent<Rigidbody2D>().velocity.x) * maxSpeed,
                 GetComponent<Rigidbody2D>().velocity.y);
+        }
+
+
+        if (isJumping && jumpCounter <= maxJumpForceTime)
+        {
+            jump();
         }
     }
 
