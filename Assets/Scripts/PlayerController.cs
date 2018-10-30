@@ -155,7 +155,13 @@ public class PlayerController : MonoBehaviour {
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity);
-        if (hit.collider == null)
+        if (hit)
+        {
+            Debug.Log(hit.transform.tag);
+        }
+
+        //if (hit.collider == null)
+        if (hit && hit.transform.tag == "Pastabled")
         {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePos.z = 0;

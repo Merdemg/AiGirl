@@ -17,17 +17,22 @@ public class copier : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
         if (collision.transform.tag != "Uncopiable")
         {
 
-            if (collision.GetComponent<Platform>() && collision.GetComponentInChildren<PlayerController>())
+            if (collision.transform.GetComponent<Platform>() && collision.transform.GetComponentInChildren<PlayerController>())
             {   // DONT COPY THE PLAYER WITH THE PLATFORM
                 pController.gameObject.transform.parent = null;
             }
 
             pController.setObjToCopy(collision.gameObject, isCutter);
 
-            if (collision.GetComponent<Platform>() && collision.GetComponentInChildren<PlayerController>())
+            if (collision.transform.GetComponent<Platform>() && collision.transform.GetComponentInChildren<PlayerController>())
             {   // DONT COPY THE PLAYER WITH THE PLATFORM
                 pController.gameObject.transform.parent = collision.transform;
             }
@@ -37,20 +42,20 @@ public class copier : MonoBehaviour {
             {
                 pController.setSavedVelocity(collision.transform.GetComponent<Rigidbody2D>().velocity);
             }
-            
+
             pController.setRotation(collision.transform.rotation);
             pController.setSavedScale(collision.transform.localScale);
             if (isCutter)
             {
                 collision.gameObject.SetActive(false);
             }
-            if(collision.transform.tag == "Crate")  // AVI'S NOOB SHIT< COME BACK LATER
+            if (collision.transform.tag == "Crate")  // AVI'S NOOB SHIT< COME BACK LATER
             {
                 collision.gameObject.SetActive(false);
 
             }
         }
- 
+
         Destroy(this.gameObject);
     }
 
