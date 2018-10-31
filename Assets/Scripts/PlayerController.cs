@@ -161,7 +161,7 @@ public class PlayerController : MonoBehaviour {
         }
 
         //if (hit.collider == null)
-        if (hit && hit.transform.tag == "Pastabled")
+        if (hit && hit.transform.tag == "Pastable")
         {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePos.z = 0;

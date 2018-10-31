@@ -11,6 +11,21 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1913678464983858}
   m_IsPrefabAsset: 1
+--- !u!1 &1525324828359400
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4401181341127574}
+  m_Layer: 0
+  m_Name: ShootPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1913678464983858
 GameObject:
   m_ObjectHideFlags: 0
@@ -23,7 +38,7 @@ GameObject:
   - component: {fileID: 50081343070066504}
   - component: {fileID: 61969025688382204}
   - component: {fileID: 114059521321679314}
-  - component: {fileID: 114374569660492308}
+  - component: {fileID: 114716149495825426}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Uncopiable
@@ -31,6 +46,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4401181341127574
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1525324828359400}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.955, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4871108387622160}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4871108387622160
 Transform:
   m_ObjectHideFlags: 1
@@ -40,7 +68,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -48.71, y: -6.47, z: -0.27787304}
   m_LocalScale: {x: 3, y: 3, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4401181341127574}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -76,7 +105,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.07770017, y: -0.054154873}
+  m_Offset: {x: -0.04, y: -0.054154873}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -87,7 +116,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.6101952, y: 1.5116904}
+  m_Size: {x: 1.24, y: 1.5116904}
   m_EdgeRadius: 0
 --- !u!114 &114059521321679314
 MonoBehaviour:
@@ -100,14 +129,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5641eefcbe97b7f4d8f6d66cb6f5548a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 10
---- !u!114 &114374569660492308
+  Health: 8
+  shootCoolDown: 2.5
+  bullet: {fileID: 1792162498026778, guid: 1a3cb345f40f5c34c8e97be6b9c2501c, type: 2}
+  shootSpeed: 1000
+  shootPos: {fileID: 4401181341127574}
+--- !u!114 &114716149495825426
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1913678464983858}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 79221f4e220f4974b9eacf8c31e64fa0, type: 3}
   m_Name: 
@@ -117,6 +150,7 @@ MonoBehaviour:
     m_Bits: 0
   shootCoolDown: 2.5
   bullet: {fileID: 0}
+  maxShootDistance: 10
   shootSpeed: 1000
   left: {fileID: 0}
   right: {fileID: 0}

@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class CrateSpawner : MonoBehaviour {
 
-    public float Delay = 2;
+    [SerializeField] float delayMin = 1.5f;
+    [SerializeField] float delayMax = 3f;
     public float DelayTimer;
 
     public Transform Crate;
 
     public Transform CratePrefab;
 
+    float spawnActual;
+
 	// Use this for initialization
 	void Start () {
-        DelayTimer = Delay;
+        DelayTimer = Random.Range(delayMin, delayMax);
 	}
 	
 	// Update is called once per frame
@@ -24,7 +27,7 @@ public class CrateSpawner : MonoBehaviour {
             if(DelayTimer <= 0)
             {
                 Crate =  Instantiate(CratePrefab, transform.position, transform.rotation);
-                DelayTimer = Delay;
+                DelayTimer = Random.Range(delayMin, delayMax); ;
             }
 
         }

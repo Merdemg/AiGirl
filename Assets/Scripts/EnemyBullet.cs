@@ -24,6 +24,10 @@ public class EnemyBullet : MonoBehaviour {
         {
             Destroy(collision.transform.gameObject);
         }
+        else if (collision.transform.tag == "Crate")
+        {
+            Destroy(collision.transform.gameObject, 0.001f);
+        }
 
         Destroy(this.gameObject);
     }

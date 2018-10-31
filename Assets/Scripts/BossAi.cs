@@ -9,10 +9,20 @@ public class BossAi : MonoBehaviour {
     [SerializeField] float shootCoolDown = 2.5f;
     [SerializeField] GameObject bullet;
     [SerializeField] float shootSpeed = 1000;
+    [SerializeField] Transform shootPos;
+
+    [SerializeField] float minJumpTime = 2.5f;
+    [SerializeField] float maxJumpTime = 4.5f;
+    [SerializeField] float jumpForce = 500f;
+    float jumpTimeActual;
+    float jumpTimer = 0;
+
+    GameObject player;
 
     // Use this for initialization
     void Start () {
-		
+        player = FindObjectOfType<PlayerController>().gameObject;
+        jumpTimeActual = Random.Range(minJumpTime, maxJumpTime);
 	}
 	
 	// Update is called once per frame
@@ -23,14 +33,34 @@ public class BossAi : MonoBehaviour {
         }
         else if (counter >= shootCoolDown)
         {
-            counter = 0;
+            counter -= shootCoolDown;
             shoot();
         }
+
+        if (jumpTimer < jumpTimeActual)
+        {
+            jumpTimer += Time.deltaTime;
+        }
+        else
+        {
+            jumpTimer = 0;
+            jumpTimeActual = Random.Range(minJumpTime, maxJumpTime);
+            jump();
+        }
+        
+    }
+
+    void jump()
+    {
+        GetComponent<Rigidbody2D>().AddForce(jumpForce * transform.up);
     }
 
     void shoot()
     {
-        
+        GameObject bul = Instantiate(bullet, shootPos.position, Quaternion.identity);
+        Vector2 dir = player.transform.position - this.transform.position;
+        dir.Normalize();
+        bul.GetComponent<Rigidbody2D>().AddForce(dir * shootSpeed);
     }
 
 
@@ -40,6 +70,12 @@ public class BossAi : MonoBehaviour {
         {
             Destroy(collision.gameObject);
             Health--;
+
+            if (Health <= 0)
+            {
+                Destroy(this.gameObject, 0.001f);
+            }
+
         }
         
     }
