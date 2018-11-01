@@ -72,8 +72,9 @@ public class BossAi : MonoBehaviour {
             Health--;
 
             if (Health <= 0)
-            {
-                Destroy(this.gameObject, 0.001f);
+            {   // MAGIC NUM< FIX LATER
+                Application.LoadLevel(2);
+                //Destroy(this.gameObject, 0.001f);
             }
 
         }
