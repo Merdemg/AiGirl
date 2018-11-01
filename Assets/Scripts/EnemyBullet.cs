@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour {
+    [SerializeField] GameObject myPrefab;
 
 	// Use this for initialization
 	void Start () {
@@ -29,6 +30,15 @@ public class EnemyBullet : MonoBehaviour {
             Destroy(collision.transform.gameObject, 0.001f);
         }
 
-        Destroy(this.gameObject);
+        if (!collision.transform.GetComponent<copier>())
+        {
+            Destroy(this.gameObject, 0.01f);
+        }
+        
+    }
+
+    public GameObject getPrefab()
+    {
+        return myPrefab;
     }
 }

@@ -30,7 +30,8 @@ public class copier : MonoBehaviour {
                 pController.gameObject.transform.parent = null;
             }
 
-            pController.setObjToCopy(collision.gameObject, isCutter);
+
+                pController.setObjToCopy(collision.gameObject, isCutter);
 
             if (collision.transform.GetComponent<Platform>() && collision.transform.GetComponentInChildren<PlayerController>())
             {   // DONT COPY THE PLAYER WITH THE PLATFORM
@@ -41,6 +42,7 @@ public class copier : MonoBehaviour {
             if (collision.transform.tag == "Projectile")
             {
                 pController.setSavedVelocity(collision.transform.GetComponent<Rigidbody2D>().velocity);
+                // Get bullet prefab from bullet
             }
 
             pController.setRotation(collision.transform.rotation);
